@@ -5,7 +5,7 @@ export const PLAY_SONG = "PLAY_SONG";
 export const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
 export const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
 
-export const getSongs = (artist) => {
+export const getSongsAction = (artist) => {
   return async (dispatch) => {
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist);
@@ -20,7 +20,7 @@ export const getSongs = (artist) => {
     }
   };
 };
-export const getPopSongs = (artist) => {
+export const getPopSongsAction = (artist) => {
   return async (dispatch) => {
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist);
@@ -35,7 +35,7 @@ export const getPopSongs = (artist) => {
     }
   };
 };
-export const getHipHopSongs = (artist) => {
+export const getHipHopSongsAction = (artist) => {
   return async (dispatch) => {
     try {
       const response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist);
@@ -51,7 +51,7 @@ export const getHipHopSongs = (artist) => {
   };
 };
 
-export const playSong = (song) => {
+export const playSongAction = (song) => {
   return (dispatch) => {
     dispatch({ type: PLAY_SONG, payload: song });
   };

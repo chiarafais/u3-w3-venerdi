@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Col, NavLink, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getHipHopSongs, getPopSongs, getSongs } from "../redux/actions";
+import { getHipHopSongsAction, getPopSongsAction, getSongsAction } from "../redux/actions";
 import MySingleSong from "./MySingleSong";
 
 const MyMainSection = () => {
@@ -12,9 +12,9 @@ const MyMainSection = () => {
   const canzoniHipHop = useSelector((state) => state.song.hiphop);
 
   useEffect(() => {
-    dispatch(getSongs("queen"));
-    dispatch(getPopSongs("KatyPerry"));
-    dispatch(getHipHopSongs("Eminem"));
+    dispatch(getSongsAction("queen"));
+    dispatch(getPopSongsAction("KatyPerry"));
+    dispatch(getHipHopSongsAction("Eminem"));
   }, []);
 
   return (

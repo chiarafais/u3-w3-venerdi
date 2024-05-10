@@ -1,5 +1,5 @@
 import { Col, Image } from "react-bootstrap";
-import { addToFavouriteAction, playSong, removeToFavouriteAction } from "../redux/actions";
+import { addToFavouriteAction, playSongAction, removeToFavouriteAction } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const MySingleSong = (song) => {
@@ -16,7 +16,7 @@ const MySingleSong = (song) => {
           className="img-fluid"
           src={song.song.album.cover_medium}
           alt="track"
-          onClick={() => dispatch(playSong(song.song))}
+          onClick={() => dispatch(playSongAction(song.song))}
         />
 
         {isFav ? (
