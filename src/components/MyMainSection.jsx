@@ -1,6 +1,22 @@
+import { useEffect } from "react";
 import { Col, NavLink, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { getHipHopSongs, getPopSongs, getSongs } from "../redux/actions";
+import MySingleSong from "./MySingleSong";
 
 const MyMainSection = () => {
+  const dispatch = useDispatch();
+  //devo entrare dentro l'array che mi restituisce
+  const canzoni = useSelector((state) => state.song.results);
+  const canzoniPop = useSelector((state) => state.song.pop);
+  const canzoniHipHop = useSelector((state) => state.song.hiphop);
+
+  useEffect(() => {
+    dispatch(getSongs("queen"));
+    dispatch(getPopSongs("KatyPerry"));
+    dispatch(getHipHopSongs("Eminem"));
+  }, []);
+
   return (
     <div className="col-12 col-md-9 offset-md-3 mainPage">
       <Row>
@@ -16,10 +32,12 @@ const MyMainSection = () => {
         <Col xs={10}>
           <div id="rock">
             <h2>Rock Classics</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="rockSection"
-            ></div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="rockSection">
+              {canzoni.length > 0 &&
+                canzoni.slice(0, 4).map((canzone) => {
+                  return <MySingleSong key={canzone.id} song={canzone} />;
+                })}
+            </div>
           </div>
         </Col>
       </Row>
@@ -27,10 +45,12 @@ const MyMainSection = () => {
         <Col xs={10}>
           <div id="pop">
             <h2>Pop Culture</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="popSection"
-            ></div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="popSection">
+              {canzoniPop.length > 0 &&
+                canzoniPop.slice(0, 4).map((canzone) => {
+                  return <MySingleSong key={canzone.id} song={canzone} />;
+                })}
+            </div>
           </div>
         </Col>
       </Row>
@@ -38,10 +58,12 @@ const MyMainSection = () => {
         <Col xs={10}>
           <div id="hiphop">
             <h2>#HipHop</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="hipHopSection"
-            ></div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="hipHopSection">
+              {canzoniHipHop.length > 0 &&
+                canzoniHipHop.slice(0, 4).map((canzone) => {
+                  return <MySingleSong key={canzone.id} song={canzone} />;
+                })}
+            </div>
           </div>
         </Col>
       </Row>
