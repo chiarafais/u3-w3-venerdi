@@ -8,6 +8,10 @@ const MyFooter = () => {
   const favorites = useSelector((state) => state.song.content);
 
   const isFav = favorites.includes(playSong.id);
+  /* FUNZIONE PER FAR PARTIRE LA MUSICA!! (non sono riuscita a gestire correttamente l'icona di  pausa quando è in play quindi la musica non si interrompe )*/
+  const play = () => {
+    document.querySelector("audio").play();
+  };
 
   return (
     <div className="container-fluid fixed-bottom bg-container pt-1">
@@ -39,7 +43,7 @@ const MyFooter = () => {
                   <Image src={"src/assets/playerbuttons/prev.png"} alt="prev" />
                 </NavLink>
                 <NavLink>
-                  <Image src={"src/assets/playerbuttons/play.png"} alt="play" />
+                  <Image src={"src/assets/playerbuttons/play.png"} alt="play" onClick={() => play()} />
                 </NavLink>
                 <NavLink>
                   <Image src={"src/assets/playerbuttons/next.png"} alt="next" />
@@ -51,6 +55,7 @@ const MyFooter = () => {
               <div className="progress mt-3">
                 <div role="progressbar"></div>
               </div>
+              <audio src={playSong.preview}></audio>
             </Col>
           </Row>
         </Col>

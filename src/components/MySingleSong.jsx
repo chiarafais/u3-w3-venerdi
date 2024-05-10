@@ -6,7 +6,6 @@ const MySingleSong = (song) => {
   const dispatch = useDispatch();
 
   const favorites = useSelector((state) => state.song.content);
-  console.log(favorites);
   const isFav = favorites.includes(song.song.id);
 
   return (

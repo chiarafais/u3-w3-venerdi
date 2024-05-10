@@ -54,6 +54,9 @@ export const getHipHopSongsAction = (artist) => {
 export const playSongAction = (song) => {
   return (dispatch) => {
     dispatch({ type: PLAY_SONG, payload: song });
+    setTimeout(() => {
+      document.querySelector("audio").play();
+    }, 150);
   };
 };
 
